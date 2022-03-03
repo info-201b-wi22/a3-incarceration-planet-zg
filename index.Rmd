@@ -3,69 +3,59 @@ title: "A3: Incarceration"
 output: html_document
 ---
 
+```{r include=F}
+source("summary.R")
+```
+
+
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+In this project we will compare the trends of prision admission rate for female and male, we will focus on the following variables:
+
+- year: current year
+
+- state: state name in USA
+
+- county_name: county name
+
+- female_prison_adm_rate: the prision admission rate of female
+
+- female_prison_adm_rate: the prision admission rate of male
+
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+The avearge prison admission rate of female is `r round(stats$female.mean, 2)`, the median prison admission rate of female is `r round(stats$female.median, 2)`, the maximum prison admission rate of female is `r round(stats$female.max, 2)`, the minimum prison admission rate of female is `r round(stats$female.min, 2)`. The avearge prison admission rate of male is `r round(stats$male.mean, 2)`, the median prison admission rate of male is `r round(stats$male.median, 2)`, the maximum prison admission rate of male is `r round(stats$male.max, 2)`, the minimum prison admission rate of male is `r round(stats$male.min, 2)`, so the avearge prison admission rate of male is much higher than the average prison admission rate of female.
 
-These will likely be calculated using your DPLYR skills, answering questions such as: 
-
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
 
 ### The Dataset
-
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
-
+The dataset was collected by Bureau of Justice Statistics (BJS) and Annual Survey of Jails (ASJ), This project was funded by the Robert W. Wilson Charitable Trust.  The county-level variability makes for more robust than the state-level, theoretically-grounded studies of the high rates of incarceration seen across the United States, the dataset contains 153811 observations and 121 variables.
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+What's the trend of the prison admission rate for female and male? Is there any difference between female and male?
 
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = FALSE, code = readLines("chart1.R"), warning=F, message=F}
 ```
+
+The figure suggests that both female and male have an increasding trend of the prison admission rate over these years, the average prison admission rate of male is higher than male, there is a sudden decrease in the average prison admission rate for male in around 1983.
+
 
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+What is the relationship between the average prison admission rate of female and the average prison admission rate of male, are they positively linear associated?
 
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+```{r, echo = FALSE, code = readLines("chart2.R"), warning=F, message=F}
+```
+
+The figure suggests that the average prison admission rate of female is strongly positve linear associated with the average prison admission rate of male, that't to say, when the average prison admission rate of female increases, the average prison admission rate of male also increases.
+
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r, echo = FALSE, code = readLines("map.R"), warning=F, message=F}
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+```
 
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
-- Use a minimalist theme for the map 
+The map tells us that Warren has the highest prison admission rate of female, Clinton has the second highest prison admisson rate for female, and Hamilton has the lowest prison admission rate for female.
